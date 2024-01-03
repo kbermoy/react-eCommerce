@@ -59,8 +59,6 @@ function App() {
   }
 
   function removeBooks(books) {
-    console.log("remove");
-    console.log(books);
 
     setCart((oldCart) => [...oldCart.filter((item) => +item.id !== +books.id)]);
   }
