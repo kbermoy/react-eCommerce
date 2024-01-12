@@ -125,6 +125,10 @@ nav {
   bottom: -6px;
 }
 
+.items__liked--heart {
+  color: #7342d6;
+}
+
 /*  LANDING  */
 #landing {
   background-color: rgb(115, 66, 214, 0.1);
@@ -254,6 +258,7 @@ header {
 .book {
   width: 25%;
   padding: 24px;
+  position: relative;
 }
 
 .book__img--wrapper {
@@ -286,6 +291,24 @@ header {
   text-decoration: line-through;
   padding-right: 6px;
   color: #bfbfbf;
+}
+
+.favorites__btn {
+  position: absolute;
+  top: 40px;
+  font-size: 20px;
+  right: 36px;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 50%;
+  background-color: white;
+  color: darkgray;
+  transition: all ease 300ms;
+  z-index: 100;
+}
+
+.favorites__btn:hover {
+  transform: translateY(-1px);
 }
 
 /*  BOOKS LOADING STATE  */

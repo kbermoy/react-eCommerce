@@ -11,6 +11,11 @@ const Nav = ({ cart, getTotalQuantity }) => {
         <img src={logo} className="logo" alt="" />
         <ul className="nav__links">
           <li className="nav__list">
+            <Link to="/favorites" className="nav__link">
+              <FontAwesomeIcon className="items__liked--heart" icon='heart' />
+            </Link>
+          </li>
+          <li className="nav__list">
             <Link to="/" className="nav__link">
               Home
             </Link>

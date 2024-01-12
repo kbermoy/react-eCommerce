@@ -7,6 +7,7 @@ import { books } from "./data";
 import BookInfo from "./components/pages/BookInfo.jsx";
 import { useEffect, useState } from "react";
 import Cart from "./components/pages/Cart.jsx";
+import Favorites from "./components/pages/Favorites.jsx";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -29,7 +30,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(cart);
+    // console.log(cart);
   }, [cart]);
 
   function getItemQuantity(item) {
@@ -75,6 +76,11 @@ function App() {
     ]);
   }
 
+  // logic for adding items to favorites
+  function addToFavorites() {
+    console.log('add to favorites')
+  }
+
   return (
     <Router>
       <div className="App">
@@ -84,12 +90,12 @@ function App() {
           <Route
             path="/books"
             exact
-            Component={() => <Books books={books} />}
+            Component={() => <Books books={books} addToFavorites={addToFavorites} />}
           />
           <Route
             path="/books/:id"
             exact
-            Component={() => <BookInfo books={books} addToCart={addToCart} />}
+            Component={() => <BookInfo books={books} addToCart={addToCart} addToFavorites={addToFavorites}/>}
           />
           <Route
             path="/cart"
@@ -105,6 +111,10 @@ function App() {
                 updateCart={updateCart}
               />
             )}
+          />
+          <Route
+            path="/favorites"
+            Component={() => <Favorites  />}
           />
         </Routes>
         <Footer />

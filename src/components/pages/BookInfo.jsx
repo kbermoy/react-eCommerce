@@ -5,13 +5,14 @@ import Rating from "../ui/Rating";
 import Price from "../ui/Price";
 import Book from "../ui/Book";
 
-const BookInfo = ({ books, addToCart }) => {
+const BookInfo = ({ books, addToCart, addToFavorites }) => {
   const { id } = useParams()
   const selectedBook = books.find(book => +id === +book.id)
   
   return (
     <div className="books__body">
       <section id="bookInfo">
+        {/* {addToFavorites()} */}
         <div className="books__container">
           <div className="bookInfo__row">
             <div className="bookInfo__top">
