@@ -9,8 +9,18 @@ import { useEffect, useState } from "react";
 import Cart from "./components/pages/Cart.jsx";
 import Favorites from "./components/pages/Favorites.jsx";
 
+/*
+
+  TODO: favorites feature
+  1. when clicked change heart to red and back to gray if already red
+  2. update favorites when heart clicked
+  3. create UI for favorites page
+
+*/
+
 function App() {
   const [cart, setCart] = useState([]);
+  const [favorites, setFavorites] = useState([])
 
   function addToCart(book) {
     const dupeItem = cart.find((item) => +item.id === +book.id); // if undefined it is not a dupeItem
@@ -77,8 +87,15 @@ function App() {
   }
 
   // logic for adding items to favorites
-  function addToFavorites() {
+  function addToFavorites(item) {
     console.log('add to favorites')
+    setFavorites(oldFavorites => [...oldFavorites, item])
+    console.log(favorites)
+    let favoritesBtn = document.getElementsByClassName('.favorites__btn')
+    favoritesBtn.innerHTML = ' favorites__btn--active'
+    // if added already and clicked again, remove it from list
+    // when clicked: 1) add to react variable, 2) change color to red
+
   }
 
   return (

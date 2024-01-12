@@ -32,7 +32,7 @@ const Book = ({ book, addToFavorites }) => {
               <img src={book.url} alt="" className="book__img" />
             </figure>
           </Link>
-          <button className="favorites__btn" onClick={addToFavorites} >
+          <button className="favorites__btn" onClick={() => addToFavorites(book)} >
             <FontAwesomeIcon icon='heart' />
           </button>
           <div className="book__title">{book.title}</div>

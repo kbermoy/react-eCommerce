@@ -311,6 +311,10 @@ header {
   transform: translateY(-1px);
 }
 
+.favorites__btn--active {
+  color: darkred;
+}
+
 /*  BOOKS LOADING STATE  */
 .book__img--skeleton {
   width: 100%;
