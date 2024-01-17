@@ -88,13 +88,14 @@ function App() {
 
   // logic for adding items to favorites
   function addToFavorites(item) {
-    console.log('add to favorites')
-    setFavorites(oldFavorites => [...oldFavorites, item])
-    console.log(favorites)
-    let favoritesBtn = document.getElementsByClassName('.favorites__btn')
-    favoritesBtn.innerHTML = ' favorites__btn--active'
-    // if added already and clicked again, remove it from list
-    // when clicked: 1) add to react variable, 2) change color to red
+    const favoriteItem = favorites.find((favorite) => +favorite.id === +item.id)
+
+    // if favoriteItem exist then remove from list, otherwise add to list
+    setFavorites((oldFavorites) => 
+      favoriteItem
+        ? [...oldFavorites.filter((favorite) => +favorite.id !== +item.id)]
+        : [...oldFavorites, item]
+    )
 
   }
 
@@ -107,7 +108,7 @@ function App() {
           <Route
             path="/books"
             exact
-            Component={() => <Books books={books} addToFavorites={addToFavorites} />}
+            Component={() => <Books books={books} addToFavorites={addToFavorites} favorites={favorites} />}
           />
           <Route
             path="/books/:id"

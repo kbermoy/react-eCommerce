@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Book from "../ui/Book";
 
-const Books = ({ books: initialBooks, addToFavorites }) => {
+const Books = ({ books: initialBooks, addToFavorites, favorites }) => {
   // need to use a variable so useState
   const [books, setBooks] = useState(initialBooks)
 
@@ -31,7 +31,7 @@ const Books = ({ books: initialBooks, addToFavorites }) => {
 
           <div className="books">
             {books
-              .map(book => <Book book={book} addToFavorites={addToFavorites} key={book.id} />)
+              .map(book => <Book book={book} addToFavorites={addToFavorites} favorites={favorites} key={book.id} />)
             }
           </div>
         </div>

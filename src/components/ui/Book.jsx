@@ -5,7 +5,7 @@ import Rating from "./Rating";
 import Price from "./Price";
 import Favorites from "../pages/Favorites";
 
-const Book = ({ book, addToFavorites }) => {
+const Book = ({ book, addToFavorites, favorites }) => {
   const [img, setImg] = useState();
 
   useEffect(() => {
@@ -18,11 +18,6 @@ const Book = ({ book, addToFavorites }) => {
     };
   });
 
-  function addMe() {
-
-    console.log('addMe')
-  }
-
   return (
     <div className="book">
       {img ? (
@@ -32,9 +27,21 @@ const Book = ({ book, addToFavorites }) => {
               <img src={book.url} alt="" className="book__img" />
             </figure>
           </Link>
-          <button className="favorites__btn" onClick={() => addToFavorites(book)} >
-            <FontAwesomeIcon icon='heart' />
-          </button>
+          {favorites.find((item) => +item.id === +book.id) ? (
+            <button
+              className="favorites__btn--active"
+              onClick={() => addToFavorites(book)}
+            >
+              <FontAwesomeIcon icon="heart" />
+            </button>
+          ) : (
+            <button
+              className="favorites__btn"
+              onClick={() => addToFavorites(book)}
+            >
+              <FontAwesomeIcon icon="heart" />
+            </button>
+          )}
           <div className="book__title">{book.title}</div>
           <Rating rating={book.rating} />
           <div className="book__pricing">
