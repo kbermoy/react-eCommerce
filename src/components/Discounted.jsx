@@ -2,7 +2,7 @@ import React from "react";
 import { books } from "../data";
 import Book from "./ui/Book";
 
-const Discounted = () => {
+const Discounted = ({ addToFavorites, favorites }) => {
   return (
     <section id="discounted">
       <div className="container">
@@ -15,7 +15,7 @@ const Discounted = () => {
               .filter((book) => book.salePrice !== null)
               .slice()
               .map((book) => (
-                <Book book={book} key={book.id} />
+                <Book book={book} key={book.id} addToFavorites={addToFavorites} favorites={favorites}/>
               ))}
           </div>
         </div>

@@ -5,13 +5,13 @@ import Featured from "./Featured";
 import Landing from "./Landing";
 import Highlights from "./Highlights";
 
-const Home = () => {
+const Home = ({ addToFavorites, favorites }) => {
   return (
     <>
       <Landing />
       <Highlights />
-      <Featured />
-      <Discounted />
+      <Featured addToFavorites={addToFavorites} favorites={favorites} />
+      <Discounted addToFavorites={addToFavorites} favorites={favorites} />
       <Explore />
     </>
   );

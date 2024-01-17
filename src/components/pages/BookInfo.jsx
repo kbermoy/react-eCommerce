@@ -5,7 +5,7 @@ import Rating from "../ui/Rating";
 import Price from "../ui/Price";
 import Book from "../ui/Book";
 
-const BookInfo = ({ books, addToCart, addToFavorites }) => {
+const BookInfo = ({ books, addToCart, addToFavorites, favorites }) => {
   const { id } = useParams()
   const selectedBook = books.find(book => +id === +book.id)
   
@@ -66,7 +66,7 @@ const BookInfo = ({ books, addToCart, addToFavorites }) => {
               {books
                 .filter(book => book.rating === 5 && book.id !== +id)
                 .slice(0, 4)
-                .map(book => <Book book={book} key={book.id} />)
+                .map(book => <Book book={book} addToFavorites={addToFavorites} favorites={favorites} key={book.id} />)
               }
             </div>
           </div>

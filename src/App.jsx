@@ -91,20 +91,29 @@ function App() {
     const favoriteItem = favorites.find((favorite) => +favorite.id === +item.id)
 
     // if favoriteItem exist then remove from list, otherwise add to list
-    setFavorites((oldFavorites) => 
-      favoriteItem
-        ? [...oldFavorites.filter((favorite) => +favorite.id !== +item.id)]
-        : [...oldFavorites, item]
-    )
-
+    // setFavorites((oldFavorites) => 
+    //   favoriteItem
+    //     ? [...oldFavorites.filter((favorite) => +favorite.id !== +item.id)]
+    //     : [...oldFavorites, item]
+    // )
+    if(favoriteItem) {
+      const updateCart = favorites.filter(favorite => +favorite.id !== +item.id)
+      setFavorites(updateCart)
+    } else {
+      setFavorites([...favorites, item])
+    }
   }
+
+  useEffect(() => {
+    console.log(favorites);
+  }, [favorites]);
 
   return (
     <Router>
       <div className="App">
         <Nav cart={cart} getTotalQuantity={getTotalQuantity} />
         <Routes>
-          <Route path="/" exact Component={Home} />
+          <Route path="/" exact Component={() => <Home addToFavorites={addToFavorites} favorites={favorites} />} />
           <Route
             path="/books"
             exact
@@ -113,7 +122,7 @@ function App() {
           <Route
             path="/books/:id"
             exact
-            Component={() => <BookInfo books={books} addToCart={addToCart} addToFavorites={addToFavorites}/>}
+            Component={() => <BookInfo books={books} addToCart={addToCart} favorites={favorites} addToFavorites={addToFavorites}/>}
           />
           <Route
             path="/cart"
@@ -132,7 +141,7 @@ function App() {
           />
           <Route
             path="/favorites"
-            Component={() => <Favorites  />}
+            Component={() => <Favorites favorites={favorites} addToFavorites={addToFavorites} />}
           />
         </Routes>
         <Footer />
